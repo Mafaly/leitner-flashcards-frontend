@@ -1,0 +1,7 @@
+{
+  "name": "leitner-flashcards-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
