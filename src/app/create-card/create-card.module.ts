@@ -1,11 +1,11 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CreateCardPage } from './create-card.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { Tab1PageRoutingModule } from './tab1-routing.module';
+import { CreateCardRoutingModule } from './create-card-routing.module';
 
 @NgModule({
   imports: [
@@ -13,8 +13,9 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    CreateCardRoutingModule,
+    ReactiveFormsModule,
   ],
-  declarations: [Tab1Page]
+  declarations: [CreateCardPage]
 })
-export class Tab1PageModule {}
+export class CreateCardModule{}
