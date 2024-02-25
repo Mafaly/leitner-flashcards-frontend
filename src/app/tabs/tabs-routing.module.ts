@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -16,21 +16,12 @@ const routes: Routes = [
         loadChildren: () => import('../create-card/create-card.module').then(m => m.CreateCardModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-      },
-      {
         path: '',
-        redirectTo: '/tabs/cards-list',
+        redirectTo: '/cards-list',
         pathMatch: 'full'
       }
     ]
   },
-  {
-    path: '',
-    redirectTo: '/tabs/cards-list',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({
