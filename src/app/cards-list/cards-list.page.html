@@ -8,16 +8,17 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-list>
-    <!--<ion-item *ngFor="let card of cards">-->
-      <ion-item >
-      <ion-label>
-        <h2>question</h2>
-        <h2>answer</h2>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-card *ngFor="let card of cards">
+      <ion-card-header>
+        <ion-card-subtitle>{{ card.tag }}</ion-card-subtitle>
+        <ion-card-title>{{ card.question }}</ion-card-title>
+      </ion-card-header>
 
+      <ion-card-content>
+        {{ card.category }}
+      </ion-card-content>
 
-  <app-explore-container name="Cards List page"></app-explore-container>
+      <ion-button fill="clear">Show answer</ion-button>
+    </ion-card>
+
 </ion-content>
