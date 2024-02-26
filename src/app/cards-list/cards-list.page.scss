@@ -1,0 +1,13 @@
+.filter-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.filter-search,
+.filter-category {
+  flex: 1;
+  margin: 0 5px;
+}
