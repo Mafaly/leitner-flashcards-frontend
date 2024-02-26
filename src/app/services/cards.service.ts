@@ -8,7 +8,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class CardsService {
-  private baseUrl = 'http://localhost:8080/cards';
+  private baseUrl = 'http://localhost:3000/cards';
 
   constructor(private http: HttpClient) { }
 
