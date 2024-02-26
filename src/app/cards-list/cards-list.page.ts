@@ -22,4 +22,8 @@ export class CardsListPage implements OnInit {
     });
   }
 
+  searchTags(tag: string) {
+    this.cards = this.cards.filter(card => card.tag?.toLowerCase().includes(tag.toLowerCase()));
+  }
+
 }
