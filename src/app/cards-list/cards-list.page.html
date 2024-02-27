@@ -8,10 +8,20 @@
 
 <ion-content [fullscreen]="true">
   <div class="filter-bar">
-    <ion-searchbar class="filter-search" #searchInput (keyup.enter)="searchTags(searchInput.value ?? '')" placeholder="Search by tag"></ion-searchbar>
-    <ion-select class="filter-category" placeholder="Select Category" [(ngModel)]="selectedCategories" (ionChange)="filterCards()" multiple="true">
-      <ion-select-option *ngFor="let category of categories" [value]="category">{{category}}</ion-select-option>
+    <ion-searchbar class="filter-search" #searchInput
+                   (keyup.enter)="addTag(searchInput.value ?? ''); searchInput.value=''"
+                   placeholder="Search by tag"></ion-searchbar>
+    <ion-select class="filter-category" placeholder="Select Category" [(ngModel)]="selectedCategories"
+                (ionChange)="filterCards()" multiple="true">
+      <ion-select-option *ngFor="let category of categories" [value]="category">{{ category }}</ion-select-option>
     </ion-select>
+  </div>
+
+  <div class="search-tags">
+    <ion-chip *ngFor="let tag of tagsList">
+      <ion-label>{{ tag }}</ion-label>
+      <ion-icon name="close-circle" (click)="removeSearchTag(tag)"></ion-icon>
+    </ion-chip>
   </div>
 
   <ion-card *ngFor="let card of filteredCards">
@@ -21,7 +31,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      Category : {{ getCategory(card.category) }}
+      Category : {{ getCategoryValue(card.category) }}
     </ion-card-content>
 
     <ion-button fill="clear">Show answer</ion-button>
