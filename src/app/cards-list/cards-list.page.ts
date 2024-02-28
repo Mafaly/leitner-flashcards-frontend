@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Card} from "../models/card";
 import {CardsService} from "../services/cards.service";
+import {CategoryMap, getCategoryValue} from "../models/Category";
 
 @Component({
   selector: 'app-tab1',
@@ -10,9 +11,10 @@ import {CardsService} from "../services/cards.service";
 export class CardsListPage implements OnInit {
   cards: Card[] = [];
   filteredCards: Card[] = [];
-  categories: (number | string)[] = [1, 2, 3, 4, 5, 6, 7, 'Done'];
+  categories = Object.values(CategoryMap)
   selectedCategories: (number | string)[] = [];
-  lastSearchTag: string = '';
+  tagsList: string[] = [];
+  protected readonly getCategoryValue = getCategoryValue;
 
   constructor(private cardsService: CardsService) {
   }
@@ -21,45 +23,38 @@ export class CardsListPage implements OnInit {
     this.fetchCards();
   }
 
-  fetchCards(tags?: string[]) {
-    this.cardsService.getAllCards(tags).subscribe(cards => {
+  refreshList() {
+    this.fetchCards();
+  }
+
+  fetchCards() {
+    this.cardsService.getAllCards(this.tagsList).subscribe(cards => {
       this.cards = cards;
       this.filteredCards = [...this.cards];
+      this.filterCards()
     });
   }
 
-  searchTags(tag: string) {
-    this.lastSearchTag = tag;
-    this.filterCards();
+  addTag(tag: string) {
+    if (tag && !this.tagsList.includes(tag)) {
+      this.tagsList.push(tag);
+      this.refreshList()
+    }
   }
 
-  getCategory(category: string): number | string {
-    const mapping: { [key: string]: number | string } = {
-      'FIRST': 1,
-      'SECOND': 2,
-      'THIRD': 3,
-      'FOURTH': 4,
-      'FIFTH': 5,
-      'SIXTH': 6,
-      'SEVEN': 7,
-      'DONE': 'Done',
-    };
-    return mapping[category] || 'Done';
+  removeSearchTag(tag: string) {
+    this.tagsList = this.tagsList.filter(t => t !== tag);
+    this.refreshList()
   }
 
   filterCards() {
     let tempFilteredCards = [...this.cards];
 
-    if (this.lastSearchTag) {
-      tempFilteredCards = tempFilteredCards.filter(card => card.tag?.toLowerCase().includes(this.lastSearchTag.toLowerCase()));
-    }
-
     if (this.selectedCategories.length > 0) {
       tempFilteredCards = tempFilteredCards.filter(card =>
-        this.selectedCategories.includes(this.getCategory(card.category))
+        this.selectedCategories.includes(getCategoryValue(card.category))
       );
     }
-
     this.filteredCards = tempFilteredCards;
   }
 }
