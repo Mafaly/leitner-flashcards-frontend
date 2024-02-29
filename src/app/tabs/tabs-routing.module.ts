@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import {QuizComponent} from "../quiz/quiz.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: 'create-card',
         loadChildren: () => import('../create-card/create-card.module').then(m => m.CreateCardModule)
+      },
+      {
+        path: 'quiz-card',
+        component: QuizComponent
       },
       {
         path: '',

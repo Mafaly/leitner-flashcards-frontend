@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Card } from '../models/card';
-import { User } from '../models/user';
+import { CardUserData } from '../models/card-user-data';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class CardsService {
     return this.http.get<Card[]>(this.baseUrl, { params });
   }
 
-  createCard(cardData: User): Observable<Card> {
+  createCard(cardData: CardUserData): Observable<Card> {
     return this.http.post<Card>(this.baseUrl, cardData);
   }
 

@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
+import {QuizComponent} from "../quiz/quiz.component";
 
 @NgModule({
   imports: [
@@ -13,8 +14,9 @@ import { TabsPage } from './tabs.page';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonicModule.forRoot(),
   ],
-  declarations: [TabsPage]
+  declarations: [TabsPage,QuizComponent]
 })
 export class TabsPageModule {}
