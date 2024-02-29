@@ -14,6 +14,7 @@ export class CardsListPage implements OnInit {
   categories = Object.values(CategoryMap)
   selectedCategories: (number | string)[] = [];
   tagsList: string[] = [];
+  flippedCards: { [key: string]: boolean } = {};
   protected readonly getCategoryValue = getCategoryValue;
 
   constructor(private cardsService: CardsService) {
@@ -56,5 +57,15 @@ export class CardsListPage implements OnInit {
       );
     }
     this.filteredCards = tempFilteredCards;
+  }
+
+  flipCard(cardId: string): void {
+    this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
+
+  flipBack(cardId: string): void {
+    if (this.flippedCards[cardId]) {
+      this.flippedCards[cardId] = false;
+    }
   }
 }
