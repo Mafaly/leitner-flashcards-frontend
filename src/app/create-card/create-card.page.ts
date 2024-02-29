@@ -19,14 +19,23 @@ export class CreateCardPage {
     });
   }
 
+
   submitForm() {
     if (this.cardForm.valid) {
       this.cardsService.createCard(this.cardForm.value).subscribe({
-        next: (res) => console.log('Card created:', res),
-        error: (e) => console.error('Error creating card:', e),
+        next: (res) => {
+          alert('Card created successfully');
+        },
+        error: (e) => {
+          alert('Error creating card');
+        },
         complete: () => console.log('Creation of card complete')
       });
+    }else{
+      alert('Form is not valid. Please check your input.')
     }
   }
+
+
 }
 

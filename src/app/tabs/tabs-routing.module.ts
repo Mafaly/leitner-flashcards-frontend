@@ -21,6 +21,10 @@ const routes: Routes = [
         component: QuizComponent
       },
       {
+        path: 'start-quiz',
+        loadChildren: () => import('../quiz/start-quiz/start-quiz.module').then(m => m.StartQuizModule)
+      },
+      {
         path: '',
         redirectTo: '/cards-list',
         pathMatch: 'full'
