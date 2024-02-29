@@ -13,4 +13,6 @@ export class StartQuizComponent {
   startQuiz() {
     this.router.navigateByUrl('/quiz-card');
   }
+
+
 }

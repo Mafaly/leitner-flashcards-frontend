@@ -46,6 +46,17 @@ export class QuizComponent implements OnInit {
     });
   }
 
+
+  validateAnyway(cardId: string) {
+    this.cardsService.answerCard(cardId, true).subscribe({
+      next: () => {
+        alert('Card validated!');
+        this.cardUserData[cardId].answer = ''; // Optionally clear the answer
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
 }
 
 

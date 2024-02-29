@@ -7,8 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-list>
-    <ion-card *ngFor="let card of cards; let i = index">
+    <ion-card *ngFor="let card of cards; let i = index" class="custom-card">
       <ion-card-header>
         <ion-card-title>{{ card.question }}</ion-card-title>
         <ion-card-subtitle>{{ card.tag }}</ion-card-subtitle>
@@ -19,8 +18,8 @@
           <ion-input [(ngModel)]="cardUserData[card.id].answer" type="text" placeholder="Enter your answer"></ion-input>
         </ion-item>
         <ion-button expand="block" (click)="submitAnswer(card.id, cardUserData[card.id].answer)">Submit</ion-button>
+        <ion-button expand="block" fill="clear" (click)="validateAnyway(card.id)">Validate Anyway</ion-button>
       </ion-card-content>
     </ion-card>
-  </ion-list>
 </ion-content>
 
