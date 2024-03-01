@@ -1,25 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {Card} from "../models/card";
-import {CardsService} from "../services/cards.service";
-import {CategoryMap, getCategoryValue} from "../models/Category";
+import {Component} from '@angular/core';
+import {Card} from "../model/card";
+import {CardsService} from "../../services/cards.service";
+import {CategoryMap, getCategoryValue} from "../model/Category";
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'cards-list.page.html',
   styleUrls: ['cards-list.page.scss']
 })
-export class CardsListPage implements OnInit {
+export class CardsListPage {
   cards: Card[] = [];
   filteredCards: Card[] = [];
   categories = Object.values(CategoryMap)
   selectedCategories: (number | string)[] = [];
   tagsList: string[] = [];
+  flippedCards: { [key: string]: boolean } = {};
   protected readonly getCategoryValue = getCategoryValue;
 
   constructor(private cardsService: CardsService) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.fetchCards();
   }
 
@@ -56,5 +57,15 @@ export class CardsListPage implements OnInit {
       );
     }
     this.filteredCards = tempFilteredCards;
+  }
+
+  flipCard(cardId: string): void {
+    this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
+
+  flipBack(cardId: string): void {
+    if (this.flippedCards[cardId]) {
+      this.flippedCards[cardId] = false;
+    }
   }
 }

@@ -11,7 +11,7 @@ describe('CardsListPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CardsListPage],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CardsListPage);
