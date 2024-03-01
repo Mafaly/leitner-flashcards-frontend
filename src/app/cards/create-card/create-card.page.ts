@@ -24,7 +24,7 @@ export class CreateCardPage {
     });
   }
 
-  submitForm() {
+  async submitForm() {
     if (this.cardForm.valid) {
       this.cardsService.createCard(this.cardForm.value).subscribe({
         next: async () => {
@@ -33,6 +33,8 @@ export class CreateCardPage {
         },
         error: () => this.notificationService.errorAlert("Error creating card"),
       });
+    }else{
+      await this.notificationService.errorAlert('Form is not valid. Please check your input.')
     }
   }
 }

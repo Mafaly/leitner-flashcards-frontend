@@ -6,13 +6,15 @@ import {CardsListPage} from './cards-list.page';
 
 
 import {CardsListPageRoutingModule} from './cards-list-routing.module';
+import {CardsModule} from "../cards.module";
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    CardsListPageRoutingModule
+    CardsListPageRoutingModule,
+    CardsModule,
   ],
   declarations: [CardsListPage]
 })

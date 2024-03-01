@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CardsService } from '../services/cards.service'; // Adjust the path as necessary
-import { Card } from '../models/card';
+import { CardsService } from '../services/cards.service';
+import {Card} from "../cards/model/card"; // Adjust the path as necessary
 
 @Component({
   selector: 'app-quiz',
