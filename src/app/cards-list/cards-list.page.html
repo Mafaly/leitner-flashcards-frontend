@@ -24,17 +24,29 @@
     </ion-chip>
   </div>
 
-  <ion-card *ngFor="let card of filteredCards">
-    <ion-card-header>
-      <ion-card-title>{{ card.question }}</ion-card-title>
-      <ion-card-subtitle>{{ card.tag }}</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      Category : {{ getCategoryValue(card.category) }}
-    </ion-card-content>
-
-    <ion-button fill="clear">Show answer</ion-button>
-  </ion-card>
+  <div *ngFor="let card of filteredCards; let i = index">
+    <ion-card [class.is-flipped]="flippedCards[card.id]" (mouseleave)="flipBack(card.id)">
+      <div *ngIf="!flippedCards[card.id]">
+        <ion-card-header>
+          <ion-card-title>{{ card.question }}</ion-card-title>
+          <ion-card-subtitle>{{ card.tag }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          Category : {{ getCategoryValue(card.category) }}
+        </ion-card-content>
+        <ion-button fill="clear" (click)="flipCard(card.id)">Show answer</ion-button>
+      </div>
+      <div *ngIf="flippedCards[card.id]">
+        <ion-card-header>
+          <ion-card-title>{{ card.question }}</ion-card-title>
+          <ion-card-subtitle>{{ card.tag }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{ card.answer }}
+        </ion-card-content>
+        <ion-button fill="clear" (click)="flipCard(card.id)">Hide answer</ion-button>
+      </div>
+    </ion-card>
+  </div>
 
 </ion-content>
