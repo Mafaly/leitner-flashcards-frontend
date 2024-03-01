@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Card} from "../models/card";
-import {CardsService} from "../services/cards.service";
-import {CategoryMap, getCategoryValue} from "../models/Category";
+import {Component} from '@angular/core';
+import {Card} from "../model/card";
+import {CardsService} from "../../services/cards.service";
+import {CategoryMap, getCategoryValue} from "../model/Category";
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'cards-list.page.html',
   styleUrls: ['cards-list.page.scss']
 })
-export class CardsListPage implements OnInit {
+export class CardsListPage {
   cards: Card[] = [];
   filteredCards: Card[] = [];
   categories = Object.values(CategoryMap)
@@ -20,7 +20,7 @@ export class CardsListPage implements OnInit {
   constructor(private cardsService: CardsService) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.fetchCards();
   }
 

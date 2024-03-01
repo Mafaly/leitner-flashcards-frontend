@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {TabsPage} from './tabs.page';
 
 const routes: Routes = [
   {
@@ -9,11 +9,11 @@ const routes: Routes = [
     children: [
       {
         path: 'cards-list',
-        loadChildren: () => import('../cards-list/cards-list.module').then(m => m.CardsListModule)
+        loadChildren: () => import('../cards/cards-list/cards-list.module').then(m => m.CardsListModule)
       },
       {
         path: 'create-card',
-        loadChildren: () => import('../create-card/create-card.module').then(m => m.CreateCardModule)
+        loadChildren: () => import('../cards/create-card/create-card.module').then(m => m.CreateCardModule)
       },
       {
         path: '',
