@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Card} from "../model/card";
 import {CardsService} from "../../services/cards.service";
 import {CategoryMap, getCategoryValue} from "../model/Category";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-tab1',
@@ -15,7 +16,6 @@ export class CardsListPage {
   selectedCategories: (number | string)[] = [];
   tagsList: string[] = [];
   flippedCards: { [key: string]: boolean } = {};
-  protected readonly getCategoryValue = getCategoryValue;
 
   constructor(private cardsService: CardsService) {
   }
@@ -68,4 +68,5 @@ export class CardsListPage {
       this.flippedCards[cardId] = false;
     }
   }
+
 }

@@ -37,5 +37,6 @@ export class CreateCardPage {
       await this.notificationService.errorAlert('Form is not valid. Please check your input.')
     }
   }
+
 }
 

@@ -1,0 +1,40 @@
+<ion-card class="custom-card">
+  <ion-card-header>
+    <ion-card-title>{{ card.question }}</ion-card-title>
+    <ion-card-subtitle>{{ card.tag }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-input [formControl]="answer" [readonly]="answered" label="Your Answer" label-placement="floating"
+                 placeholder="Enter your answer" type="text"></ion-input>
+    </ion-item>
+    <ion-item [class]="{'hidden':!compareAnswer}">
+      <ion-text>{{ card.answer }}</ion-text>
+      <ion-icon
+        class="ion-margin-start"
+        name="{{card.answer.toLowerCase()===answer.value?.toLowerCase()?'checkmark-circle-outline':'alert-circle-outline'}}"></ion-icon>
+    </ion-item>
+    <div *ngIf="!answered">
+      <ion-button (click)="showAnswer()" expand="block">Show Answer</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="submitAnswer(false)" [disabled]="!compareAnswer" expand="block" fill="clear">
+              Invalidate
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="submitAnswer(true)" [disabled]="!compareAnswer" expand="block" fill="solid">Validate
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-text *ngIf="answered" class="ion-text-center">
+      {{ answeredCorrectly ? 'Answered Correctly' : 'Answered Incorrectly' }}
+      <ion-icon
+        class="ion-margin-start"
+        name="{{card.answer.toLowerCase()===answer.value?.toLowerCase()?'checkmark-circle-outline':'alert-circle-outline'}}"></ion-icon>
+    </ion-text>
+  </ion-card-content>
+</ion-card>

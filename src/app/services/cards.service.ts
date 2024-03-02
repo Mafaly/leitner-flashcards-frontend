@@ -3,12 +3,13 @@ import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {CardUserData} from "../models/card-user-data";
 import {Card} from "../cards/model/card";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardsService {
-  private baseUrl = 'http://localhost:3000/cards';
+  private baseUrl = `${environment.backendUrl}/cards`
 
   constructor(private http: HttpClient) { }
 
