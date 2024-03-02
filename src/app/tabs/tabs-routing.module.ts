@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../cards/create-card/create-card.module').then(m => m.CreateCardModule)
       },
       {
+        path: 'quiz',
+        loadChildren: () => import('../quiz/quiz.module').then(m => m.QuizModule)
+      },
+      {
         path: '',
         redirectTo: '/cards-list',
         pathMatch: 'full'

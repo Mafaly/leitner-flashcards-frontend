@@ -1,9 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {IonicModule} from '@ionic/angular';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
 
-import {ExploreContainerComponentModule} from '../explore-container/explore-container.module';
 
-import {CreateCardPage} from './create-card.page';
+import { CreateCardPage } from './create-card.page';
 
 describe('CreateCardPage', () => {
   let component: CreateCardPage;
@@ -12,7 +11,7 @@ describe('CreateCardPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CreateCardPage],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
+      imports: [IonicModule.forRoot()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(CreateCardPage);

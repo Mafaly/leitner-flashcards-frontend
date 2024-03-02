@@ -14,7 +14,7 @@ export class NotificationsService {
     const alert = await this.alertController.create({
       header,
       message,
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await alert.present();
@@ -23,7 +23,19 @@ export class NotificationsService {
   async successToast(message: string) {
     const toast = await this.toastController.create({
       message,
-      duration: 2000
+      duration: 2000,
+      color: 'success',
+      icon: 'checkmark-circle'
+    });
+    await toast.present();
+  }
+
+  async errorToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color: 'danger',
+      icon: 'close-circle'
     });
     await toast.present();
   }
