@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CardsService } from '../services/cards.service';
-import {Card} from "../cards/model/card"; // Adjust the path as necessary
+import {Component, OnInit} from '@angular/core';
+import {CardsService} from '../../services/cards.service';
+import {Card} from "../../cards/model/card";
+import {NotificationsService} from "../../shared/notifications.service";
 
 @Component({
   selector: 'app-quiz',
@@ -11,7 +12,8 @@ export class QuizComponent implements OnInit {
   cards: Card[] = [];
   cardUserData: { [key: string]: { answer: string } } = {};
 
-  constructor(private cardsService: CardsService) {}
+  constructor(private cardsService: CardsService, notificationService: NotificationsService) {
+  }
 
   ngOnInit() {
     this.loadQuizCards();
@@ -25,7 +27,9 @@ export class QuizComponent implements OnInit {
           this.cardUserData[card.id] = { answer: '' };
         });
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+
+      },
     });
   }
 

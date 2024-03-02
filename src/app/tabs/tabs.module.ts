@@ -1,22 +1,20 @@
-import { IonicModule } from '@ionic/angular';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {IonicModule} from '@ionic/angular';
+import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
+import {TabsPageRoutingModule} from './tabs-routing.module';
 
-import { TabsPage } from './tabs.page';
-import {QuizComponent} from "../quiz/quiz.component";
+import {TabsPage} from './tabs.page';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
-    IonicModule,
-    CommonModule,
     FormsModule,
     TabsPageRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
     IonicModule.forRoot(),
   ],
-  declarations: [TabsPage,QuizComponent]
+  declarations: [TabsPage]
 })
 export class TabsPageModule {}

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-start-quiz',
@@ -11,7 +11,7 @@ export class StartQuizComponent {
   constructor(private router: Router) {}
 
   startQuiz() {
-    this.router.navigateByUrl('/quiz-card');
+    this.router.navigateByUrl('/quiz/interogation');
   }
 
 

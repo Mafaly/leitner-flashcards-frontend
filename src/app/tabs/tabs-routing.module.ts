@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
-import {QuizComponent} from "../quiz/quiz.component";
 
 const routes: Routes = [
   {
@@ -17,12 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('../cards/create-card/create-card.module').then(m => m.CreateCardModule)
       },
       {
-        path: 'quiz-card',
-        component: QuizComponent
-      },
-      {
-        path: 'start-quiz',
-        loadChildren: () => import('../quiz/start-quiz/start-quiz.module').then(m => m.StartQuizModule)
+        path: 'quiz',
+        loadChildren: () => import('../quiz/quiz.module').then(m => m.QuizModule)
       },
       {
         path: '',
