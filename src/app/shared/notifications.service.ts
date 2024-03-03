@@ -20,10 +20,15 @@ export class NotificationsService {
     await alert.present();
   }
 
-  async successToast(message: string) {
+  /**
+   * Display a success toast.
+   * @param message The message to display.
+   * @param duration The duration of the toast in seconds.
+   */
+  async successToast(message: string, duration: number = 2) {
     const toast = await this.toastController.create({
       message,
-      duration: 2000,
+      duration: duration * 1000,
       color: 'success',
       icon: 'checkmark-circle'
     });

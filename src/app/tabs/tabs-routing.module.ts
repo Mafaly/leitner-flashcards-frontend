@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../quiz/quiz.module').then(m => m.QuizModule)
       },
       {
+        path: 'account',
+        loadChildren: () => import('../user/user.module').then(m => m.UserModule)
+      },
+      {
         path: '',
         redirectTo: '/cards-list',
         pathMatch: 'full'
