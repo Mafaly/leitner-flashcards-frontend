@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User Space</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content scroll-y="false">
+  <div class="profile-picture">
+    <ion-img
+      alt="The Wisconsin State Capitol building in Madison, WI at night"
+      src="{{environment.backendUrl}}/users/profile-picture"
+    ></ion-img>
+  </div>
+  <form (submit)="uploadFile($event)">
+    <div class="center">
+      <div class="file-upload-wrapper">
+        <input (change)="fileSelected($event)" hidden id="file-upload" type="file"/>
+        <label class="file-upload-label" for="file-upload">
+          <i class="material-icons">file_upload</i>
+          <span>Change profile picture</span>
+        </label>
+      </div>
+    </div>
+    <div>Selected file: {{selectedFile?.name}}</div>
+    <ion-button expand="block" type="submit">Upload</ion-button>
+  </form>
+</ion-content>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
